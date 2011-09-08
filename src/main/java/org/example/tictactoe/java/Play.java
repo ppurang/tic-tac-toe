@@ -1,24 +1,42 @@
 package org.example.tictactoe.java;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author Piyush Purang
  */
 public class Play {
-
     public static final class Game {
-        private final List<Move> moves = new ArrayList<Move>(9);
+        private final Map<Cell,Move> moves = new HashMap<Cell,Move>();
 
         public Game nextMove(final Move next) {
-            moves.add(next);
+            if(moves.get(next.getCell())==null){
+                moves.put(next.getCell(), next);
+            }else{
+                throw new IllegalStateException("move already exists " + next) ; // TODO provide a guard method
+            }
             return this;
         }
 
         @Override
         public String toString() {
-            return moves.toString();
+            final StringBuilder sb= new StringBuilder();
+            final String line="-------";
+            for (int i= 1; i < 4;i++){
+                sb.append(line).append("\n|");
+                for (int j= 1; j < 4;j++){
+                    final Cell cell = new Cell(i,j);
+                    if(moves.containsKey(cell)){
+                        sb.append(moves.get(cell).getPlayer()).append("|");
+                    }else{
+                        sb.append(" |");
+                    }
+                }
+                sb.append("\n");
+            }
+            sb.append(line);
+            return sb.toString();
         }
     }
 
@@ -33,9 +51,17 @@ public class Play {
             this.player = player;
         }
 
+        public Cell getCell() {
+            return cell;
+        }
+
         @Override
         public String toString() {
             return String.format("%d %s %s", number, cell, player);
+        }
+
+        public Player getPlayer() {
+            return player;
         }
     }
 
