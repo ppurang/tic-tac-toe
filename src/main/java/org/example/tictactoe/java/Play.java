@@ -16,11 +16,21 @@ public class Play {
             return this;
         }
 
-
-
         @Override
         public String toString() {
             return moves.toString();
+        }
+
+        public boolean isFinished() {
+            return true;
+        }
+
+        public boolean hasWinner() {
+            return true;
+        }
+
+        public Player winner() {
+            return Player.NOUGHT;
         }
     }
 
