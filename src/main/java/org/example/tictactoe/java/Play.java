@@ -19,8 +19,6 @@ public class Play {
             return this;
         }
 
-
-
         @Override
         public String toString() {
             final StringBuilder sb= new StringBuilder();
@@ -39,6 +37,18 @@ public class Play {
             }
             sb.append(line);
             return sb.toString();
+        }
+
+        public boolean isFinished() {
+            return true;
+        }
+
+        public boolean hasWinner() {
+            return true;
+        }
+
+        public Player winner() {
+            return Player.NOUGHT;
         }
     }
 
