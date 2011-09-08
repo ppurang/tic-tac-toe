@@ -72,7 +72,7 @@ public class Play {
         public int hashCode() {
             if(hashCode == 0) {
                 int result = 17;
-                result = 37 * result + row;
+                result = 37 * result + (10 * row);
                 result = 37 * result + col;
                 hashCode = result;
             }
