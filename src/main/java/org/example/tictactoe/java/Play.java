@@ -127,6 +127,7 @@ public class Play {
                 .nextMove(new Move(3, new Cell(1, 2), Player.NOUGHT))
                 .nextMove(new Move(4, new Cell(2, 2), Player.CROSS))
                 .nextMove(new Move(5, new Cell(1, 3), Player.NOUGHT));
+        System.out.println(game);
         if(game.isFinished()) {
             if(game.hasWinner()) {
                 System.out.println("Winner is " + game.winner());
